@@ -56,7 +56,7 @@ function draw(flag) {
       turtle.y -= Math.cos(turtle.angle) * len;
       c.lineTo(turtle.x, turtle.y);
       c.lineWidth = 50 / ((queueA.length + 1) * 10);
-      c.strokeStyle = "rgba(150, 0, "+(queueA.length*50)+", 0.5)";
+      c.strokeStyle = "rgba(150, 0, " + queueA.length * 50 + ", 0.5)";
       c.stroke();
       c.closePath();
     } else if (current == "+") {
@@ -82,23 +82,34 @@ function draw(flag) {
 }
 
 //---------------------------------------------
-var trigger = false;
+var trigger1 = false;
+var trigger2 = false;
+var setSpeed = 200;
 function animate() {
-    requestAnimationFrame(animate);
-    if (trigger) {
-        angle -= Math.random()/200;
-    } else {
-        angle += Math.random()/200;
-    }
-
-    if (angle>Math.PI/6+0.05) {
-        trigger = true;
-    }
-    if (angle<Math.PI/6-0.15) {
-        trigger = false;
-    }
-    
-    draw(false);
+  requestAnimationFrame(animate);
+  var speed = setSpeed;
+  if (!trigger2) {
+    speed = speed / 2;
   }
-  
-  animate();
+  if (trigger1) {
+    angle -= Math.random() / speed;
+  } else {
+    angle += Math.random() / speed;
+  }
+
+  if (angle > Math.PI / 6 + 0.05) {
+    trigger1 = true;
+  }
+  if (angle < Math.PI / 6 - 0.15) {
+    trigger1 = false;
+  }
+  if (angle > Math.PI / 6 + 0.025 || angle < Math.PI / 6 - 0.075) {
+    trigger2 = true;
+  } else {
+    trigger2 = false;
+  }
+
+  draw(false);
+}
+
+animate();
