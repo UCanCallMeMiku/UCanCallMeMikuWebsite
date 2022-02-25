@@ -4,7 +4,6 @@ h2{
 
 .fractaltree {
     z-index: 5;
-    right: 0vw;
 }
 
 
@@ -14,7 +13,7 @@ h2{
     height: 6vh;
     z-index: -1;
     position: absolute;
-    animation: drop 1s linear infinite;
+    animation: drop 1s ease-in infinite;
 }
 @keyframes drop {
     0% {

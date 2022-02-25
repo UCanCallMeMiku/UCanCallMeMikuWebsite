@@ -1,6 +1,11 @@
 var canvas = document.getElementById("fractaltree");
-canvas.width = window.innerWidth * 0.5;
+canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.7;
+if (canvas.width > canvas.height) {
+  canvas.width = canvas.height;
+} else {
+  canvas.height = canvas.width;
+}
 var c = canvas.getContext("2d");
 //---------------------------------------------
 
@@ -26,26 +31,33 @@ function generate() {
   draw(true);
 }
 
+function reset() {
+
+}
+
 var turtle = {
   x: canvas.width / 2,
   y: canvas.height,
   angle: 0,
 };
 
-var len = canvas.height / 4.4;
+var len = 0;
+if (canvas.width > canvas.height) {
+  len = canvas.height / 4.4;
+} else {
+  len = canvas.width / 4.4;
+}
 var angle = Math.PI / 6;
 var queueX = [];
 var queueY = [];
 var queueA = [];
 
-var iteration;
 
 function draw(flag) {
   if (flag) {
     len = len * 0.5;
-    iteration++;
   }
-  c.clearRect(0, 0, innerWidth, innerWidth);
+  c.clearRect(0, 0, innerWidth, innerHeight);
   for (var i = 0; i < sentence.length; i++) {
     var current = sentence.charAt(i);
 
@@ -56,7 +68,7 @@ function draw(flag) {
       turtle.y -= Math.cos(turtle.angle) * len;
       c.lineTo(turtle.x, turtle.y);
       c.lineWidth = 50 / ((queueA.length + 1) * 10);
-      c.strokeStyle = "rgba(150, 0, " + queueA.length * 50 + ", 0.5)";
+      c.strokeStyle = "rgba(" + ((-Math.sin(speedCount / 20)) * 25 + 150) + ", 0, " + queueA.length * 60 + "," + (1 - (queueA.length / 6)) + ")";
       c.stroke();
       c.closePath();
     } else if (current == "+") {
@@ -82,32 +94,14 @@ function draw(flag) {
 }
 
 //---------------------------------------------
-var trigger1 = false;
-var trigger2 = false;
-var setSpeed = 200;
+var setSpeed = 20;
+var speedCount = 0;
+var lastCalled = 0;
 function animate() {
   requestAnimationFrame(animate);
-  var speed = setSpeed;
-  if (!trigger2) {
-    speed = speed / 2;
-  }
-  if (trigger1) {
-    angle -= Math.random() / speed;
-  } else {
-    angle += Math.random() / speed;
-  }
 
-  if (angle > Math.PI / 6 + 0.05) {
-    trigger1 = true;
-  }
-  if (angle < Math.PI / 6 - 0.15) {
-    trigger1 = false;
-  }
-  if (angle > Math.PI / 6 + 0.025 || angle < Math.PI / 6 - 0.075) {
-    trigger2 = true;
-  } else {
-    trigger2 = false;
-  }
+  speedCount++;
+  angle = (Math.PI / 6) + (Math.sin(speedCount / setSpeed ) / 12 - 0.11);
 
   draw(false);
 }
