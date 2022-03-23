@@ -10,3 +10,19 @@ function rain() {
         rainDiv.innerHTML += span;
     }
 }
+
+
+var state = 0;
+var text = ["I", "LOVE", "COOKIE", "♥"];
+var display = document.getElementById("overlay");
+
+function textNext() {
+    display.style.display = "block";
+    display.innerText = text[state];
+    if (state == text.length - 1) {
+        state = 0;
+    } else {
+        state++;
+
+    }
+}
