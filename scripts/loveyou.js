@@ -13,7 +13,7 @@ function rain() {
 
 
 var state = 0;
-var text = ["I", "LOVE", "COOKIE", "♥"];
+var text = ["I", "LOVE", "COOKIE"];
 var display = document.getElementById("overlay");
 
 function textNext() {

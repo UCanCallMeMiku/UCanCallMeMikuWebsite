@@ -71,3 +71,8 @@ h2 {
     z-index: 2;
     cursor: pointer;
 }
+
+@font-face {
+    font-family: "Kimberley";
+    src: url(https://fonts.googleapis.com/css2?family=Inspiration&display=swap) format("truetype");
+}
