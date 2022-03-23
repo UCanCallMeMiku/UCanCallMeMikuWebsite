@@ -13,7 +13,6 @@ function textNext() {
         state = 0;
     } else {
         state++;
-
     }
 }
 
@@ -27,9 +26,10 @@ function rain() {
 }
 
 function next() {
-    setInterval(function() {
+    setTimeout(function() {
         textNext();
-    }, 500);
+        next();
+    }, 1000);
 }
 
 next();
