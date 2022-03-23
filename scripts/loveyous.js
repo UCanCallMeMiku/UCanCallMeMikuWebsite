@@ -31,3 +31,5 @@ function next() {
         textNext();
     }, 500);
 }
+
+next();
