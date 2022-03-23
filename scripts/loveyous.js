@@ -27,7 +27,7 @@ function rain() {
 }
 
 function next() {
-    setTimeout(function() {
+    setInterval(function() {
         textNext();
     }, 500);
 }
