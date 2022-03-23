@@ -2,10 +2,10 @@ var rainDensity = 5;
 var duration = 2;
 var size = 1;
 
-
 var state = 0;
 var text = ["I", "LOVE", "COOKIE"];
 var display = document.getElementById("overlay");
+var cloudflare = "cloudfare wtf please fix this";
 
 function textNext() {
     display.innerText = text[state];
