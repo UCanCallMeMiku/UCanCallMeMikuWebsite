@@ -1,4 +1,4 @@
-var rainDensity = 5;
+var rainDensity = 4;
 var duration = 2;
 var size = 1;
 
@@ -13,7 +13,6 @@ function textNext() {
         state = 0;
     } else {
         state++;
-
     }
 }
 
@@ -25,3 +24,11 @@ function rain() {
         rainDiv.innerHTML += span;
     }
 }
+
+function next() {
+    setInterval(function() {
+        textNext();
+    }, 500);
+}
+
+next();
