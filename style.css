@@ -58,21 +58,3 @@ h2 {
         opacity: 0;
     }
 }
-
-.overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    cursor: pointer;
-}
-
-@font-face {
-    font-family: "Kimberley";
-    src: url(https://fonts.googleapis.com/css2?family=Inspiration&display=swap) format("truetype");
-}
