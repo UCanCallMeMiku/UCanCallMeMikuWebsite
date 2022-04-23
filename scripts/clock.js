@@ -13,12 +13,19 @@ if (canvas.width > canvas.height) {
 
 canvas.style.width = canvas.width * scale + "px";
 canvas.style.height = canvas.height * scale + "px";
+
+//--------------------------------------------- cookie handler
+
+
 //--------------------------------------------- const
 
 var date = new Date();
 var mid = canvas.width / 2;
 var radius = canvas.width / 2.5;
-var width = canvas.width / 60;
+
+var setWidth = 50;
+var width = canvas.width / setWidth;
+
 var setSpacing = 0.1;
 var spacing = setSpacing;
 
@@ -142,6 +149,8 @@ function clicked() {
     jitterIterrator = 0;
     iterator = 0;
     breathingSpeed = 1;
+    document.cookie = "hi";
+    console.log(document.cookie);
 }
 
 var jitterActive = false;
