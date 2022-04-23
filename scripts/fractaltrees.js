@@ -1,6 +1,6 @@
 var canvasFractal = document.getElementById("fractaltree");
 canvasFractal.width = window.innerWidth * 0.9;
-canvasFractal.height = window.innerHeight * 0.7;
+canvasFractal.height = window.innerHeight * 0.6;
 if (canvasFractal.width > canvasFractal.height) {
     canvasFractal.width = canvasFractal.height;
 } else {
