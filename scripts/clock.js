@@ -17,12 +17,12 @@ canvasFractal.style.height = canvasFractal.height * scale + "px";
 
 var date = new Date();
 var mid = canvasFractal.width / 2;
-var radius = canvasFractal.width / 2.5;
+var radius = canvasFractal.width / 2.25;
 
 var setWidth = 50;
 var width = canvasFractal.width / setWidth;
 
-var setSpacing = 0.1;
+var setSpacing = 0.125;
 var spacing = setSpacing;
 
 //--------------------------------------------- what to show
@@ -69,8 +69,9 @@ function background() {
 function milisecond() {
     var miliseconds = date.getMilliseconds();
     ctx.lineWidth = width;
-    ctx.fillStyle = "white";
-    ctx.strokeStyle = "white";
+    var color = rgba(254, 254, 255, 1);
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.beginPath();
     if (cakeModeOn) ctx.moveTo(mid, mid);
     ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 0)), -Math.PI / 2, miliseconds / 500 * Math.PI - (Math.PI / 2));
@@ -82,8 +83,9 @@ function milisecond() {
 function second() {
     var seconds = date.getSeconds() + (date.getMilliseconds() / 1000);
     ctx.lineWidth = width;
-    ctx.fillStyle = "yellow";
-    ctx.strokeStyle = "yellow";
+    var color = "rgba(250, 88, 182, 1)";
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.beginPath();
     if (cakeModeOn) ctx.moveTo(mid, mid);
     ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 1)), -Math.PI / 2, seconds / 30 * Math.PI - (Math.PI / 2));
@@ -95,8 +97,9 @@ function second() {
 function minute() {
     var minutes = date.getMinutes() + (date.getSeconds() / 60);
     ctx.lineWidth = width;
-    ctx.fillStyle = "violet";
-    ctx.strokeStyle = "violet";
+    var color = "rgba(122, 11, 192, 1)";
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.beginPath();
     if (cakeModeOn) ctx.moveTo(mid, mid);
     ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 2)), -Math.PI / 2, minutes / 30 * Math.PI - (Math.PI / 2));
@@ -109,8 +112,9 @@ function hour() {
     var hours = date.getHours() + (date.getMinutes() / 60);
     if (hours > 12) hours = hours - 12;
     ctx.lineWidth = width;
-    ctx.fillStyle = "blue";
-    ctx.strokeStyle = "blue";
+    var color = "rgba(39, 0, 130, 1)";
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.beginPath();
     if (cakeModeOn) ctx.moveTo(mid, mid);
     ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 3)), -Math.PI / 2, hours / 6 * Math.PI - (Math.PI / 2));
