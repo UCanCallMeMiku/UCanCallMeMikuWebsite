@@ -1,13 +1,21 @@
 h2 {
     color: antiquewhite;
+    font-size: 3vh;
 }
 
 .divMain {
     border-radius: 12px;
+    margin-right: 15vw;
 }
 
 .canvas {
     z-index: 5;
+}
+
+.clock {
+    position: fixed;
+    right: 0%;
+    top: 0%;
 }
 
 .raindrop {

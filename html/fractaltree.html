@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>fractaltree</title>
     <link rel="stylesheet" href="../style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color: #1A1A40;" onload="rain()">
@@ -29,10 +33,10 @@
         </a>
     </div>
 
-    <div class="canvas" onclick="generate()"><canvas id="fractaltree"></div>
+    <div class="canvas" onclick="generate()"><canvas class="canvas" id="fractaltree"></div>
+    <script src="../scripts/fractaltrees.js"></script>
     <div id="rain"></div>
 	<script src="../scripts/rain.js"></script>
-    <script src="../scripts/fractaltrees.js"></script>
   </body>
 
 </html>

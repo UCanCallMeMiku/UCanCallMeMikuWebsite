@@ -1,12 +1,12 @@
-var canvas = document.getElementById("fractaltree");
-canvas.width = window.innerWidth * 0.9;
-canvas.height = window.innerHeight * 0.7;
-if (canvas.width > canvas.height) {
-    canvas.width = canvas.height;
+var canvasFractal = document.getElementById("fractaltree");
+canvasFractal.width = window.innerWidth * 0.9;
+canvasFractal.height = window.innerHeight * 0.7;
+if (canvasFractal.width > canvasFractal.height) {
+    canvasFractal.width = canvasFractal.height;
 } else {
-    canvas.height = canvas.width;
+    canvasFractal.height = canvasFractal.width;
 }
-var c = canvas.getContext("2d");
+var ctx = canvasFractal.getContext("2d");
 //---------------------------------------------
 
 var axiom = "F";
@@ -36,16 +36,16 @@ function reset() {
 }
 
 var turtle = {
-    x: canvas.width / 2,
-    y: canvas.height,
+    x: canvasFractal.width / 2,
+    y: canvasFractal.height,
     angle: 0,
 };
 
 var len = 0;
-if (canvas.width > canvas.height) {
-    len = canvas.height / 4.4;
+if (canvasFractal.width > canvasFractal.height) {
+    len = canvasFractal.height / 4.4;
 } else {
-    len = canvas.width / 4.4;
+    len = canvasFractal.width / 4.4;
 }
 var angle = Math.PI / 6;
 var queueX = [];
@@ -57,20 +57,20 @@ function draw(flag) {
     if (flag) {
         len = len * 0.5;
     }
-    c.clearRect(0, 0, innerWidth, innerHeight);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
     for (var i = 0; i < sentence.length; i++) {
         var current = sentence.charAt(i);
 
         if (current == "F") {
-            c.beginPath();
-            c.moveTo(turtle.x, turtle.y);
+            ctx.beginPath();
+            ctx.moveTo(turtle.x, turtle.y);
             turtle.x -= Math.sin(turtle.angle) * len;
             turtle.y -= Math.cos(turtle.angle) * len;
-            c.lineTo(turtle.x, turtle.y);
-            c.lineWidth = 50 / ((queueA.length + 1) * 10);
-            c.strokeStyle = "rgba(" + ((-Math.sin(speedCount / 20)) * 25 + 150) + ", 0, " + queueA.length * 60 + "," + (1 - (queueA.length / 6)) + ")";
-            c.stroke();
-            c.closePath();
+            ctx.lineTo(turtle.x, turtle.y);
+            ctx.lineWidth = 50 / ((queueA.length + 1) * 10);
+            ctx.strokeStyle = "rgba(" + ((-Math.sin(speedCount / 20)) * 25 + 150) + ", 0, " + queueA.length * 60 + "," + (1 - (queueA.length / 6)) + ")";
+            ctx.stroke();
+            ctx.closePath();
         } else if (current == "+") {
             turtle.angle -= angle;
         } else if (current == "-") {
@@ -85,8 +85,8 @@ function draw(flag) {
             turtle.angle = queueA.pop();
         }
     }
-    turtle.x = canvas.width / 2;
-    turtle.y = canvas.height;
+    turtle.x = canvasFractal.width / 2;
+    turtle.y = canvasFractal.height;
     turtle.angle = 0;
     queueX = [];
     queueY = [];
@@ -98,8 +98,8 @@ var setSpeed = 20;
 var speedCount = 0;
 var lastCalled = 0;
 
-function animate() {
-    requestAnimationFrame(animate);
+function animateF() {
+    requestAnimationFrame(animateF);
 
     speedCount++;
     angle = (Math.PI / 6) + (Math.sin(speedCount / setSpeed) / 12 - 0.11);
@@ -107,4 +107,4 @@ function animate() {
     draw(false);
 }
 
-animate();
+animateF();

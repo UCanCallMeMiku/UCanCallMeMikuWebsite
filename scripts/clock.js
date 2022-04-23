@@ -1,30 +1,26 @@
-var canvas = document.getElementById("loading");
-var c = canvas.getContext("2d");
+var canvasFractal = document.getElementById("clock");
+var ctx = canvasFractal.getContext("2d");
 
-var smoothScaling = 1;
-var scale = 1;
-canvas.width = window.innerWidth * 0.9 * smoothScaling;
-canvas.height = window.innerHeight * 0.7 * smoothScaling;
-if (canvas.width > canvas.height) {
-    canvas.width = canvas.height;
-} else {
-    canvas.height = canvas.width;
-}
+var scale = 0.15;
 
-canvas.style.width = canvas.width * scale + "px";
-canvas.style.height = canvas.height * scale + "px";
+canvasFractal.width = window.innerWidth;
+canvasFractal.height = window.innerWidth;
+
+canvasFractal.style.width = canvasFractal.width * scale + "px";
+canvasFractal.style.height = canvasFractal.height * scale + "px";
 
 //--------------------------------------------- cookie handler
+
 
 
 //--------------------------------------------- const
 
 var date = new Date();
-var mid = canvas.width / 2;
-var radius = canvas.width / 2.5;
+var mid = canvasFractal.width / 2;
+var radius = canvasFractal.width / 2.5;
 
 var setWidth = 50;
-var width = canvas.width / setWidth;
+var width = canvasFractal.width / setWidth;
 
 var setSpacing = 0.1;
 var spacing = setSpacing;
@@ -44,7 +40,6 @@ var hourTextOn = true;
 //--------------------------------------------- Modes
 
 var cakeModeOn = false;
-var breathingModeOn = true;
 
 //--------------------------------------------- Draw
 
@@ -52,7 +47,7 @@ var iterator = 0;
 var breathingSpeed = Infinity;
 
 
-function draw() {
+function drawIt() {
     date = new Date();
     iterator++;
 
@@ -68,69 +63,69 @@ function draw() {
 }
 
 function background() {
-    c.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvasFractal.width, canvasFractal.height);
 }
 
 function milisecond() {
     var miliseconds = date.getMilliseconds();
-    c.lineWidth = width;
-    c.fillStyle = "white";
-    c.strokeStyle = "white";
-    c.beginPath();
-    if (cakeModeOn) c.moveTo(mid, mid);
-    c.arc(mid, mid, Math.abs(radius * (1 - spacing * 0)), -Math.PI / 2, miliseconds / 500 * Math.PI - (Math.PI / 2));
-    if (cakeModeOn) c.lineTo(mid, mid);
-    if (cakeModeOn) c.fill();
-    c.stroke();
+    ctx.lineWidth = width;
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    if (cakeModeOn) ctx.moveTo(mid, mid);
+    ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 0)), -Math.PI / 2, miliseconds / 500 * Math.PI - (Math.PI / 2));
+    if (cakeModeOn) ctx.lineTo(mid, mid);
+    if (cakeModeOn) ctx.fill();
+    ctx.stroke();
 }
 
 function second() {
     var seconds = date.getSeconds() + (date.getMilliseconds() / 1000);
-    c.lineWidth = width;
-    c.fillStyle = "yellow";
-    c.strokeStyle = "yellow";
-    c.beginPath();
-    if (cakeModeOn) c.moveTo(mid, mid);
-    c.arc(mid, mid, Math.abs(radius * (1 - spacing * 1)), -Math.PI / 2, seconds / 30 * Math.PI - (Math.PI / 2));
-    if (cakeModeOn) c.lineTo(mid, mid);
-    if (cakeModeOn) c.fill();
-    c.stroke();
+    ctx.lineWidth = width;
+    ctx.fillStyle = "yellow";
+    ctx.strokeStyle = "yellow";
+    ctx.beginPath();
+    if (cakeModeOn) ctx.moveTo(mid, mid);
+    ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 1)), -Math.PI / 2, seconds / 30 * Math.PI - (Math.PI / 2));
+    if (cakeModeOn) ctx.lineTo(mid, mid);
+    if (cakeModeOn) ctx.fill();
+    ctx.stroke();
 }
 
 function minute() {
     var minutes = date.getMinutes() + (date.getSeconds() / 60);
-    c.lineWidth = width;
-    c.fillStyle = "violet";
-    c.strokeStyle = "violet";
-    c.beginPath();
-    if (cakeModeOn) c.moveTo(mid, mid);
-    c.arc(mid, mid, Math.abs(radius * (1 - spacing * 2)), -Math.PI / 2, minutes / 30 * Math.PI - (Math.PI / 2));
-    if (cakeModeOn) c.lineTo(mid, mid);
-    if (cakeModeOn) c.fill();
-    c.stroke();
+    ctx.lineWidth = width;
+    ctx.fillStyle = "violet";
+    ctx.strokeStyle = "violet";
+    ctx.beginPath();
+    if (cakeModeOn) ctx.moveTo(mid, mid);
+    ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 2)), -Math.PI / 2, minutes / 30 * Math.PI - (Math.PI / 2));
+    if (cakeModeOn) ctx.lineTo(mid, mid);
+    if (cakeModeOn) ctx.fill();
+    ctx.stroke();
 }
 
 function hour() {
     var hours = date.getHours() + (date.getMinutes() / 60);
     if (hours > 12) hours = hours - 12;
-    c.lineWidth = width;
-    c.fillStyle = "blue";
-    c.strokeStyle = "blue";
-    c.beginPath();
-    if (cakeModeOn) c.moveTo(mid, mid);
-    c.arc(mid, mid, Math.abs(radius * (1 - spacing * 3)), -Math.PI / 2, hours / 6 * Math.PI - (Math.PI / 2));
-    if (cakeModeOn) c.lineTo(mid, mid);
-    if (cakeModeOn) c.fill();
-    c.stroke();
+    ctx.lineWidth = width;
+    ctx.fillStyle = "blue";
+    ctx.strokeStyle = "blue";
+    ctx.beginPath();
+    if (cakeModeOn) ctx.moveTo(mid, mid);
+    ctx.arc(mid, mid, Math.abs(radius * (1 - spacing * 3)), -Math.PI / 2, hours / 6 * Math.PI - (Math.PI / 2));
+    if (cakeModeOn) ctx.lineTo(mid, mid);
+    if (cakeModeOn) ctx.fill();
+    ctx.stroke();
 }
 
 var textSize = 11;
 
 function text() {
-    c.fillStyle = "white";
-    c.strokeStyle = "white";
-    c.font = (canvas.width / textSize) * (Math.cos(iterator / breathingSpeed) / 2 + 0.5) + "px Orbitron";
-    c.textAlign = "center";
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "white";
+    ctx.font = (canvasFractal.width / textSize) * (Math.cos(iterator / breathingSpeed) / 2 + 0.5) + "px Orbitron";
+    ctx.textAlign = "center";
     var text = "";
     if (hourTextOn) text += ("0" + date.getHours()).slice(-2);
     if (hourTextOn && minuteTextOn || hourTextOn && secondTextOn || hourTextOn && milisecondTextOn) text += ":";
@@ -139,7 +134,7 @@ function text() {
     if (secondTextOn) text += ("0" + date.getSeconds()).slice(-2);
     if (secondTextOn && milisecondTextOn) text += ":";
     if (milisecondTextOn) text += date.getMilliseconds();
-    c.fillText(text, mid, mid + (canvas.width / textSize) / 3);
+    ctx.fillText(text, mid, mid + (canvasFractal.width / textSize) / 3);
 }
 
 //--------------------------------------------- functions
@@ -149,8 +144,8 @@ function clicked() {
     jitterIterrator = 0;
     iterator = 0;
     breathingSpeed = 1;
-    document.cookie = "hi";
-    console.log(document.cookie);
+    var audio = new Audio("../sounds/mixkit-arcade-game-jump-coin-216.wav");
+    audio.play();
 }
 
 var jitterActive = false;
@@ -170,7 +165,6 @@ function jitter() {
 
 function animate() {
     requestAnimationFrame(animate);
-    draw();
+    drawIt();
 }
-
 animate();
