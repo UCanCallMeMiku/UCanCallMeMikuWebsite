@@ -1,10 +1,11 @@
 var canvas = document.getElementById("wavefunction");
 var ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth * 0.95;
+canvas.width = window.innerWidth * 0.96;
 canvas.height = window.innerHeight * 0.65;
 
-const resolution = 20;
-const speed = 40;
+const size = 1500;
+var resolution = 1;
+const speed = 5;
 const entropyDeepnes = 1;
 var motionBlur = false;
 
@@ -181,7 +182,12 @@ class Tile {
     }
 }
 
-
+var amount = (canvas.width / resolution) * (canvas.height / resolution);
+while (amount > size) {
+    resolution++;
+    amount = (canvas.width / resolution) * (canvas.height / resolution);
+}
+console.log(resolution);
 
 
 var g1 = new Grid(Math.round(canvas.width / resolution), Math.round(canvas.height / resolution), new TileSet());

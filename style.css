@@ -19,6 +19,10 @@ body {
     position: fixed;
 }
 
+.wavefunction {
+    width: 60%;
+}
+
 .raindrop {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(81, 137, 200));
     width: 1px;
