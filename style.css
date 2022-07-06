@@ -3,9 +3,12 @@ h2 {
     font-size: 3vh;
 }
 
+body {
+    overflow: hidden;
+}
+
 .divMain {
     border-radius: 12px;
-    margin-right: 15vw;
 }
 
 .canvas {
@@ -14,8 +17,6 @@ h2 {
 
 .clock {
     position: fixed;
-    right: 0%;
-    top: 0%;
 }
 
 .raindrop {

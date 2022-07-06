@@ -1,10 +1,17 @@
 var canvasFractal = document.getElementById("clock");
 var ctx = canvasFractal.getContext("2d");
 
-var scale = 0.15;
+var scale = 0.6;
 
-canvasFractal.width = window.innerWidth;
-canvasFractal.height = window.innerWidth;
+
+if (window.innerWidth > window.innerHeight) {
+    canvasFractal.width = window.innerHeight;
+    canvasFractal.height = window.innerHeight;
+} else {
+    canvasFractal.width = window.innerWidth;
+    canvasFractal.height = window.innerWidth;
+}
+
 
 canvasFractal.style.width = canvasFractal.width * scale + "px";
 canvasFractal.style.height = canvasFractal.height * scale + "px";

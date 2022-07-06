@@ -15,7 +15,6 @@ canvasFractal.style.height = canvasFractal.height * scale + "px";
 
 //--------------------------------------------- const
 
-var date = new Date();
 var mid = canvasFractal.width / 2;
 var radius = canvasFractal.width / 2.25;
 
