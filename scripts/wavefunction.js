@@ -3,9 +3,9 @@ var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth * 0.96;
 canvas.height = window.innerHeight * 0.65;
 
-const size = 1500;
+const size = 2500;
 var resolution = 1;
-const speed = 5;
+const speed = 10;
 const entropyDeepnes = 1;
 var motionBlur = false;
 
@@ -64,20 +64,20 @@ class Grid {
                         left = this.cells[y][x - 1].tile.right;
                     }
 
-                    for (var fix = 0; fix < 5; fix++) {
-                        for (var i = 0; i < cell.fittingTiles.length; i++) {
-                            let tile = cell.fittingTiles[i];
-                            let tileFits = (
-                                (up == tile.up || up == undefined) &&
-                                (right == tile.right || right == undefined) &&
-                                (down == tile.down || down == undefined) &&
-                                (left == tile.left || left == undefined));
+                    for (var i = 0; i < cell.fittingTiles.length; i++) {
+                        let tile = cell.fittingTiles[i];
+                        let tileFits = (
+                            (up == tile.up || up == undefined) &&
+                            (right == tile.right || right == undefined) &&
+                            (down == tile.down || down == undefined) &&
+                            (left == tile.left || left == undefined));
 
-                            if (!tileFits) {
-                                cell.fittingTiles.splice(i, 1);
-                            }
+                        if (!tileFits) {
+                            cell.fittingTiles.splice(i, 1);
+                            i--;
                         }
                     }
+
                     cell.entropy = cell.fittingTiles.length;
                 }
             }
