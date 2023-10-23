@@ -236,8 +236,8 @@ function createKFF() {
 
 function logOutput() {
     createKFF();
-    let log = JSON.stringify(dataKFF).replace(/["\\]/g, '\\$&');
-    //let log = JSON.stringify(dataKFF);
+    //let log = JSON.stringify(dataKFF).replace(/["\\]/g, '\\$&');
+    let log = JSON.stringify(dataKFF);
     console.log(log);
     navigator.clipboard.writeText(log);
 }
