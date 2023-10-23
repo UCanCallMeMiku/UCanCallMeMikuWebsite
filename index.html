@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin: 0; padding: 0">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UCanCallMeMiku</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <title>Mask Light Pattern Creator</title>
+    <link rel="stylesheet" href="style2.css" />
 </head>
 
-<body style="background-color: #1A1A40;" onload="rain()">
-
-    <div class="divMain" style="background-color: #270082;">
-        <a href="index.html">
-            <h2> <br> Hello World <br> </h2>
-        </a>
+<body style="background-color: #4e4e4e; margin: 0; padding: 0">
+    <table id="colorchooser"> </table>
+    <div>
+        <input type="color" id="colorInput">
+        <button onclick="setColor()">Set Color</button>
     </div>
-
-    <div class="divMain" style="background-color: #7A0BC0;">
-        <a href="html/loading.html">
-            <h2> <br> Hello World <br> </h2>
-        </a>
-    </div>
-
-    <div class="divMain" style="background-color: #FA58B6;">
-        <a href="html/fractaltree.html">
-            <h2> <br> Hello World <br> </h2>
-        </a>
-    </div>
-
-    <div id="rain"></div>
-    <script src="scripts/rain.js"></script>
+    <div id="colorPicker"></div>
+    <table id="table" class="table"> </table>
+    <table id="ui">
+        <tr">
+            <td> <button id="frameCounter"> 0 </button> </td>
+            <td> <button id="previousFrame" onclick="previousFrame()"> previous Frame </button> </td>
+            <td> <button id="nextFrame" onclick="nextFrame()"> next Frame </button> </td>
+            <td> <button id="mirrorVerticaly" onclick="mirrorVerticaly()"> mirror Verticaly </button> </td>
+            <td> <button id="mirrorHorizontaly" onclick="mirrorHorizontaly()"> mirror Horizontaly </button> </td>
+            <td> <button id="copyPreviousFrame" onclick="copyPreviousFrame()"> copy Previous Frame </button> </td>
+            <td> <button id="deleteFrame" onclick="deleteFrame()"> delete Frame </button> </td>
+            <td> <button id="toggleAnimation" onclick="toggleAnimation()"> play Animation </button> </td>
+            <td> <button id="logOutput" onclick="logOutput()"> log Output </button> </td>
+            </tr>
+    </table>
+    <script src="script2.js"></script>
 </body>
 
 </html>
